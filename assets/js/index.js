@@ -10,6 +10,7 @@ class User {
 /**
  * @param {Date} year
  */
+debugger
 class Student extends User {
     constructor(name, surname, year) {
         super(name, surname);
@@ -18,15 +19,15 @@ class Student extends User {
     validateData(year) {
         const temp = new Date().getFullYear();
        const lim= temp-5;
-        if (year <= temp|| year >= lim) {
+        if (year > temp|| year< lim) {
             return true;
         }
        
     }
     set year(year) {
-        if (!this.validateData(year)) {
+        if (this.validateData(year)) {
 
-             throw new RangeError('Incorrect date')
+             throw new RangeError('Incorrect date');
         }
         this.year = year;  
     }
@@ -44,10 +45,6 @@ class Student extends User {
 }
 
 
-let b = new Student('Nick', 'Nosk', 2019);
-let c = new Student('Peter', 'Parker', 2008);
-let d = new Student('Otto', 'Octavius', 2017);
-let e = new Student('Ni', 'Li', 2025);
 
 
 class Group {
@@ -69,10 +66,15 @@ class Group {
         this._students.forEach(s => console.log(s.showName()));
     };
 };
-let group = new Group('Fm');
 
-group.pushStudent();
-group.pushStudent();
-group.pushStudent();
-group.pushStudent();
-group.showStudents();
+
+let b = new Student('Nick', 'Nosk', 2019);
+// let c = new Student('Peter', 'Parker', 2008);
+// let d = new Student('Otto', 'Octavius', 2017);
+// let e = new Student('Ni', 'Li', 2025);
+let group = new Group('Fm');
+//group.pushStudent(b);
+// group.pushStudent();
+// group.pushStudent();
+// group.pushStudent();
+// group.showStudents();
